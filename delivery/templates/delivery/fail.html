@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Failed</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card"
+             style="margin-top:120px;
+                    text-align:center;">
+
+            <h1 style="color:red;">
+                ❌ Login Failed!
+            </h1>
+
+            <br>
+
+            <p style="font-size:20px;
+                      color:#444;">
+
+                Invalid username or password
+
+            </p>
+
+            <br>
+
+            <a href="/open_signin"
+               class="btn">
+
+                Try Again 🔁
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

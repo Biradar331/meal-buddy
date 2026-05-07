@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Update Restaurant</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form action="{% url 'update_restaurant' restaurant.id %}"
+              method="post"
+              style="margin-top:50px;">
+
+            {% csrf_token %}
+
+            <h1>
+                ✏️ Update Restaurant
+            </h1>
+
+            <p style="text-align:center;
+                      color:#555;">
+
+                Modify restaurant information
+
+            </p>
+
+            <label>
+                <b>Restaurant Name</b>
+            </label>
+
+            <input type="text"
+                   name="name"
+                   value="{{ restaurant.name }}">
+
+            <label>
+                <b>Picture URL</b>
+            </label>
+
+            <input type="text"
+                   name="picture"
+                   value="{{ restaurant.picture }}">
+
+            <label>
+                <b>Cuisine</b>
+            </label>
+
+            <input type="text"
+                   name="cuisine"
+                   value="{{ restaurant.cuisine }}">
+
+            <label>
+                <b>Rating</b>
+            </label>
+
+            <input type="number"
+                   name="rating"
+                   min="0"
+                   max="5"
+                   step="0.5"
+                   value="{{ restaurant.rating }}">
+
+            <div style="text-align:center;">
+
+                <button type="submit">
+
+                    Update Restaurant 🍽️
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

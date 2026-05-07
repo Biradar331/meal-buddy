@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Page</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 style="margin-top:30px;">
+            Welcome {{ username }} 🍽️
+        </h1>
+
+        <div style="text-align:center; margin-bottom:20px;">
+            <a href="{% url 'logout' %}" class="btn"
+                style="background:red;">
+                Logout
+            </a>
+        </div>
+
+        <p style="text-align:center;
+                  color:#555;
+                  font-size:18px;">
+
+            Explore top restaurants and order delicious food
+
+        </p>
+
+        <br>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Restaurant Name</th>
+
+                    <th>Picture</th>
+
+                    <th>Cuisine</th>
+
+                    <th>Rating</th>
+
+                    <th>Operations</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for r in restaurantList %}
+
+                <tr>
+
+                    <td>
+                        <b>{{ r.name }}</b>
+                    </td>
+
+                    <td>
+
+                        <img src="{{ r.picture }}"
+                             class="food-img">
+
+                    </td>
+
+                    <td>
+                        {{ r.cuisine }}
+                    </td>
+
+                    <td>
+                        ⭐ {{ r.rating }}
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'view_menu' r.id username %}"
+                           class="btn">
+
+                            View Menu
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

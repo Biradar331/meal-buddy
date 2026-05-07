@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Summary</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card"
+             style="margin-top:80px;
+                    text-align:center;">
+
+            <h1>
+                🎉 Thank You For Your Order,
+                {{ username }}!
+            </h1>
+
+            <div style="text-align:center; margin-bottom:20px;">
+                <a href="{% url 'logout' %}" class="btn"
+                    style="background:red;">
+                    Logout
+                </a>
+            </div>
+
+            <br>
+
+            <h2>
+                📍 Delivery Address
+            </h2>
+
+            <p style="font-size:18px;
+                      color:#444;">
+
+                {{ customer.address }}
+
+            </p>
+
+            <br>
+
+            <p style="font-size:18px;
+                      color:green;">
+
+                Your delicious food is being prepared
+                and will be delivered shortly 🚚
+
+            </p>
+
+            <br><br>
+
+            {% if cart_items %}
+
+                <a href="{% url 'customer_menu' cart_items.0.restaurant.id username %}"
+                   class="btn">
+
+                    Back To Restaurants 🍔
+
+                </a>
+
+            {% else %}
+
+                <a href="/"
+                   class="btn">
+
+                    Back To Home 🏠
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

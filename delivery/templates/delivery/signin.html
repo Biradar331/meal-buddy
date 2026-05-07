@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign In</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form action="{% url 'signin' %}" method="post"
+              style="margin-top:100px;">
+
+            {% csrf_token %}
+
+            <h1>Customer Login 🍽️</h1>
+
+            <p style="text-align:center; color:gray;">
+                Sign in to explore delicious meals
+            </p>
+
+            <label><b>Username</b></label>
+            <input type="text" name="username" placeholder="Enter username">
+
+            <label><b>Password</b></label>
+            <input type="password" name="password" placeholder="Enter password">
+
+            <div style="text-align:center;">
+                <button type="submit">
+                    SIGN IN
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

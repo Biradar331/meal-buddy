@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurants</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 style="margin-top:30px;">
+            🍽️ Restaurant Management
+        </h1>
+
+        <p style="text-align:center;
+                  color:#555;
+                  font-size:18px;">
+
+            Manage restaurants and menu details
+
+        </p>
+
+        <br>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Restaurant Name</th>
+
+                    <th>Picture</th>
+
+                    <th>Cuisine</th>
+
+                    <th>Rating</th>
+
+                    <th>Operations</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for r in restaurantList %}
+
+                <tr>
+
+                    <td>
+                        <b>{{ r.name }}</b>
+                    </td>
+
+                    <td>
+
+                        <img src="{{ r.picture }}"
+                             class="food-img">
+
+                    </td>
+
+                    <td>
+                        {{ r.cuisine }}
+                    </td>
+
+                    <td>
+                        ⭐ {{ r.rating }}
+                    </td>
+
+                    <td>
+
+                        <div style="display:flex;
+                                    flex-direction:column;
+                                    gap:10px;">
+
+                            <a href="{% url 'open_update_restaurant' r.id %}"
+                               class="btn">
+
+                                ✏️ Update Info
+
+                            </a>
+
+                            <a href="{% url 'delete_restaurant' r.id %}"
+                               class="btn"
+                               style="background-color:red;">
+
+                                🗑️ Delete
+
+                            </a>
+
+                            <a href="{% url 'open_update_menu' r.id %}"
+                               class="btn">
+
+                                🍕 Update Menu
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

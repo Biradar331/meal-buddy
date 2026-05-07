@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Restaurant</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form action="{% url 'add_restaurant' %}"
+              method="post"
+              style="margin-top:50px;">
+
+            {% csrf_token %}
+
+            <h1>
+                ➕ Add Restaurant
+            </h1>
+
+            <p style="text-align:center;
+                      color:#555;">
+
+                Add a new restaurant to Meal Buddy
+
+            </p>
+
+            <label>
+                <b>Restaurant Name</b>
+            </label>
+
+            <input type="text"
+                   name="name"
+                   placeholder="Enter restaurant name">
+
+            <label>
+                <b>Picture URL</b>
+            </label>
+
+            <input type="text"
+                   name="picture"
+                   placeholder="Paste image URL">
+
+            <label>
+                <b>Cuisine</b>
+            </label>
+
+            <input type="text"
+                   name="cuisine"
+                   placeholder="Example: Indian, Chinese">
+
+            <label>
+                <b>Rating</b>
+            </label>
+
+            <input type="number"
+                   name="rating"
+                   min="0"
+                   max="5"
+                   step="0.5">
+
+            <div style="text-align:center;">
+
+                <button type="submit">
+
+                    Add Restaurant 🍽️
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
